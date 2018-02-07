@@ -1,0 +1,29 @@
+{
+  "name": "vending-machine",
+  "version": "1.0.0",
+  "description": "Code for Vending Machine",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.16.2",
+    "firebase": "^4.8.1",
+    "johnny-five": "^0.12.0",
+    "serialport": "^6.0.4",
+    "socket.io": "^2.0.4",
+    "twitter": "^1.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "start http://localhost:8080 && node server.js  ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jw1401/vending-machine.git"
+  },
+  "author": "jw1401",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jw1401/vending-machine/issues"
+  },
+  "homepage": "https://github.com/jw1401/vending-machine#readme"
+}
