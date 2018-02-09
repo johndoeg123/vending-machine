@@ -97,7 +97,7 @@ function vendingMachineBoard(port, myFirebaseRef, io) {
         inAction = true;
         let now = new Date();
 
-        log('Button pressed ... Kicking out Candy');
+        log('Button pressed...');
 
         servoKick().then(() => {
           blinkLight().then(() => {
@@ -145,6 +145,7 @@ function firebaseActions() {
         switch (element.key) {
 
           case 'blinkLight':
+            log('Blink light was triggered from Firebase...');
             blinkLight().then(() => {
               resetEvent.emit('reset');
             });
@@ -153,7 +154,7 @@ function firebaseActions() {
 
           case 'spendCandy':
             let now = new Date();
-            log('Button pressed ... Kicking out Candy');
+            log('Spend candy was triggered from Firebase...');
             servoKick().then(() => {
               blinkLight().then(() => {
                 tweet.postTweet('Candy was spend on ' + now.toDateString() + ' at ' + now.toTimeString());
@@ -216,8 +217,8 @@ function socket() {
       });
     });
 
-    _myFirebaseRef.child('VendingMachineData/candies').on('value', (snap) =>{
-      socket.emit('candiesCount',snap.val())
+    _myFirebaseRef.child('VendingMachineData/candies').on('value', (snap) => {
+      socket.emit('candiesCount', snap.val())
     })
   });
 }

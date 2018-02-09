@@ -88,7 +88,7 @@ app.get('/restart', (req, res) => {
 //
 app.get('/ports', (req, res) => {
 
-  // log('Get Ports...');
+  log('Get Ports...');
 
   serialport.list((err, ports) => {
 
@@ -120,6 +120,8 @@ function connectOnStart() {
 
   if (startArgument === undefined) {
 
+    log('Try finding Baord...');
+
     serialport.list((err, ports) => {
 
       ports.forEach((port) => {
@@ -149,7 +151,7 @@ function connectFirebase() {
 
   // sign in to firebase
   firebase.auth().signInWithEmailAndPassword(config.secrets.userName, config.secrets.password).then(() => {
-    log('Connected to Firebase');
+    log('Connected to Firebase...');
 
   }).catch((error) => {
     // Handle Errors here
