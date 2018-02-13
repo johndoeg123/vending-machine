@@ -13,7 +13,7 @@ var board = null;
 var startArgument = process.argv[2];
 var myFirebaseRef;
 
-log("Starting Server...");
+log("Starting Server on Raspi...");
 
 if (startArgument != undefined) {
   log('Start Arguments: ' + startArgument);
