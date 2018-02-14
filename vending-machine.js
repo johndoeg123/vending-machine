@@ -95,13 +95,12 @@ function vendingMachineBoard(port, myFirebaseRef, io) {
       if (inAction == false) {
 
         inAction = true;
-        let now = new Date();
 
         log('Button pressed...');
 
         servoKick().then(() => {
           blinkLight().then(() => {
-            tweet.postTweet('Candy was consumed on ' + now.toDateString() + ' at ' + now.toTimeString());
+            tweet.postTweet('Candy for Carmen :-)');
             resetEvent.emit('reset');
             countCandy();
             inAction = false;
@@ -147,17 +146,17 @@ function firebaseActions() {
           case 'blinkLight':
             log('Blink light was triggered from Firebase...');
             blinkLight().then(() => {
+              tweet.postTweet('Carmen got a blinking light!');
               resetEvent.emit('reset');
             });
             boardActions.blinkLight = false;
             break;
 
           case 'spendCandy':
-            let now = new Date();
             log('Spend candy was triggered from Firebase...');
             servoKick().then(() => {
               blinkLight().then(() => {
-                tweet.postTweet('Candy was spend on ' + now.toDateString() + ' at ' + now.toTimeString());
+                tweet.postTweet('Carmen was remembered to take a candy!');
                 resetEvent.emit('reset');
                 countCandy();
               });

@@ -21,8 +21,15 @@ if (startArgument != undefined) {
 
 
 firebase.initializeApp(config.firebaseConfig);
-myFirebaseRef = connectFirebase()
-connectOnStart();
+connectFirebase();
+
+firebase.auth().onAuthStateChanged((user) => {
+  if (user != null) {
+    log('Logged in as ' + user.email);
+    myFirebaseRef = firebase.database().ref(`user/${user.uid}/device-VendingMachine`);
+    connectOnStart();
+  }
+});
 
 // point to static files in public dir
 app.use(express.static(__dirname + '/public'));
@@ -153,12 +160,15 @@ function connectFirebase() {
   firebase.auth().signInWithEmailAndPassword(config.secrets.userName, config.secrets.password).then(() => {
     log('Connected to Firebase...');
 
+
   }).catch((error) => {
     // Handle Errors here
     log(error.code + ' : ' + error.message);
   });
-  return firebase.database().ref();
+  // return firebase.database().ref();
 }
+
+
 
 
 

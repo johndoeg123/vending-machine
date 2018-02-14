@@ -22,8 +22,9 @@ function getTweets() {
 }
 
 function postTweet(text) {
-
-    client.post('statuses/update', { status: text }, (error, tweet, response) => {
+    let now = new Date();
+    var tweetText = text + '    (' + now.toLocaleString('de-DE') + ')'
+    client.post('statuses/update', { status: tweetText }, (error, tweet, response) => {
         if (error) console.log(error);
         console.log(tweet.text);  // Tweet Text. 
     });
