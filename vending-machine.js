@@ -53,6 +53,7 @@ function vendingMachineBoard(port, myFirebaseRef, io) {
     _board.io.reset();
     _board = null;
     io.sockets.removeAllListeners();
+    boardStatus.isActive = false;
   });
 
   // Board on Error
@@ -69,6 +70,7 @@ function vendingMachineBoard(port, myFirebaseRef, io) {
     servo.min();
     led.off();
     rgbLed.off();
+    boardStatus.isActive = false;
   });
 
   // Board Verbindung herstellen
@@ -121,9 +123,10 @@ function countCandy() {
   _myFirebaseRef.child('VendingMachineData').once('value', (snap) => {
     try {
       boardData.candies = snap.val().candies + 1;
-      _myFirebaseRef.child('VendingMachineData').transaction(boardData);
+      _myFirebaseRef.child('VendingMachineData').set(boardData);
     }
     catch (err) {
+      console.warn(err);
       _myFirebaseRef.child('VendingMachineData').set(boardData);
     }
   });
@@ -280,3 +283,4 @@ function blinkLight() {
 // Module Exports
 //
 module.exports.vendingMachineBoard = vendingMachineBoard;
+module.exports.isActive = function(){return boardStatus.isActive}; 

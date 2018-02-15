@@ -31,6 +31,9 @@ firebase.auth().onAuthStateChanged((user) => {
   }
 });
 
+// check if Board is active
+var timer = setInterval(checkIsBoardActive, 5000);
+
 // point to static files in public dir
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
@@ -167,6 +170,43 @@ function connectFirebase() {
   });
   // return firebase.database().ref();
 }
+
+
+function checkIsBoardActive() {
+
+  if (vmBoard.isActive() == true) {
+    // console.warn('Board is active...');
+  }
+  else if (vmBoard.isActive() == false) {
+
+    log('Board not found - Restart Process...');
+    process.argv[2] = null;
+
+    setTimeout(() => {
+      process.on('exit', () => {
+        require('child_process').spawn(process.argv.shift(), process.argv, {
+          cwd: process.cwd(),
+          detached: true,
+          stdio: 'inherit',
+          shell: true
+        });
+      });
+      process.exit();
+    }, 1000);
+
+  }
+}
+
+process.on('SIGINT', () => {
+  log('Process terminated!');
+  clearInterval(timer);
+  process.exit(0);
+});
+
+process.on('exit', () => {
+  log('Process cleanup!');
+  clearInterval(timer);
+})
 
 
 
