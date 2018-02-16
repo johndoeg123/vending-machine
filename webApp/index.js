@@ -1,12 +1,7 @@
 var candyCounter, myFirebaseRef, name1, password;
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAajz2yx8UHVzy-oXudHYYVR7bg4g6XbuE",
-    authDomain: "iotapp-14c09.firebaseapp.com",
-    databaseURL: "https://iotapp-14c09.firebaseio.com",
-    projectId: "iotapp-14c09",
-    storageBucket: "iotapp-14c09.appspot.com",
-    messagingSenderId: "353876118400"
+    
 };
 
 firebase.initializeApp(firebaseConfig);
