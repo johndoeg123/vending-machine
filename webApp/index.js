@@ -15,6 +15,12 @@ firebase.auth().onAuthStateChanged((user) => {
     if (user != null) {
         myFirebaseRef = firebase.database().ref(`user/${user.uid}/device-VendingMachine`);
         init();
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('logoutButton').style.display = 'block';
+    }
+    else {
+        document.getElementById('login').style.display = 'block';
+        document.getElementById('logoutButton').style.display = 'none';
     }
 });
 
@@ -29,7 +35,7 @@ window.addEventListener('load', () => {
 function connectFirebase() {
     // sign in to firebase
     firebase.auth().signInWithEmailAndPassword(name1.value, password.value).then(() => {
-        console.log('Connected to Firebase...');
+        console.log('Connected...');
     }).catch((error) => {
         // Handle Errors
         console.log(error.code + ' : ' + error.message);

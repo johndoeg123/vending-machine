@@ -7,11 +7,11 @@ body{
 .main{
     background: white;
     width:260px;
-    height:620px;
     margin: auto;
     padding: 20px;
     border: thin solid rgb(28, 156, 156);
-    border-radius: 0px
+    border-radius: 0px;
+    margin-top: 20px;
 }
 
 .img{
@@ -60,5 +60,13 @@ body{
 }
 
 .form{
-    margin-top: 20px;
+    margin-top: 0px;
+}
+
+a{
+    color: lightgray;
+    background-color: transparent;
+    text-decoration: none;
+    font-size: 12px;
+    float: right;
 }
