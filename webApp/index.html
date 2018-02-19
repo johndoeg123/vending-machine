@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-
-    <link rel="stylesheet" href="resources/spectre.css">
-    <link rel="stylesheet" href="resources/spectre-exp.css">
-    <link rel="stylesheet" href="resources/spectre-icons.css">
+    <link rel="stylesheet" href="resources/style.css">
 
     <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
     <script src="index.js"></script>
@@ -16,57 +13,21 @@
 
 <body>
 
-    <div class="container" style="margin-top:70px">
+    <div class="main">
+        <img src="resources/carmen.jpg" class="img">
 
-        <div class="columns m-2">
-            <div class="column col-4 col-sm-8 col-md-6 col-xs-12 col-mx-auto">
-                <img src="resources/carmen.jpg" class="img-responsive">
-            </div>
+        <button class="btn" onclick="blinkLight()"> Blink Light</button>
+        <button class="btn " onclick="spendCandy()">Candy</button>
+
+        <div class="" id="candiesCounter"></div>
+
+        <div class="form">
+            <input class="input" type="text" id="name" placeholder="Name">
+            <input class="input" type="password" id="password" placeholder="Password">
+            <button class="btn2" onclick="connectFirebase()">Login</button>
+            <button class="btn2" onclick="logout()">Logout</button>
         </div>
-
-        <div class="columns" style="margin-top:50px">
-            <div class="column col-4 col-sm-8 col-md-6 col-xs-12 col-mx-auto ">
-                <div class="divider text-center" data-content="Login"></div>
-                <!-- form input control -->
-                <div class="form-group">
-                    <input class="form-input mt-2" type="text" id="name" placeholder="Name">
-                    <input class="form-input mt-2" type="password" id="password" placeholder="Password">
-                </div>
-
-                <div class="columns">
-                    <div class="column col-6">
-                        <button class="btn mt-2 centered" onclick="connectFirebase()" style="width:100%">Login</button>
-                    </div>
-
-                    <div class="column col-6">
-                        <button class="btn mt-2 centered" onclick="logout()" style="width:100%">Logout</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="columns">
-            <div class="column col-4 col-sm-8 col-md-6 col-xs-12 col-mx-auto " style="margin-top:20px">
-                <div class="divider text-center" data-content="Candy Count"></div>
-                <div class="text-center text-gray" id="candiesCounter"></div>
-            </div>
-        </div>
-
-        <div class="columns">
-            <div class="column col-4 col-sm-8 col-md-6 col-xs-12 col-mx-auto">
-                <div class="divider text-center" data-content="Actions"></div>
-                <button class="btn mt-2 centered" onclick="blinkLight()" style="width:100%"> Blink Light</button>
-            </div>
-        </div>
-
-        <div class="columns">
-            <div class="column col-4 col-sm-8 col-md-6 col-xs-12 col-mx-auto ">
-                <button class="btn mt-2 centered" onclick="spendCandy()" style="width:100%; margin-bottom:10px"> Spend Candy</button>
-            </div>
-        </div>
-
     </div>
-
 </body>
 
 </html>

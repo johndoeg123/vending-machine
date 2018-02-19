@@ -1,7 +1,12 @@
 var candyCounter, myFirebaseRef, name1, password;
 
 const firebaseConfig = {
-    
+    apiKey: "AIzaSyAajz2yx8UHVzy-oXudHYYVR7bg4g6XbuE",
+    authDomain: "iotapp-14c09.firebaseapp.com",
+    databaseURL: "https://iotapp-14c09.firebaseio.com",
+    projectId: "iotapp-14c09",
+    storageBucket: "iotapp-14c09.appspot.com",
+    messagingSenderId: "353876118400"
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -26,10 +31,9 @@ function connectFirebase() {
     firebase.auth().signInWithEmailAndPassword(name1.value, password.value).then(() => {
         console.log('Connected to Firebase...');
     }).catch((error) => {
-        // Handle Errors here
+        // Handle Errors
         console.log(error.code + ' : ' + error.message);
     });
-    // return firebase.database().ref();
 }
 
 function init() {
@@ -46,7 +50,6 @@ function spendCandy() {
     myFirebaseRef.child('VendingMachineActions/spendCandy').set(true);
 }
 
-function logout(){
-
+function logout() {
     firebase.auth().signOut();
 }
